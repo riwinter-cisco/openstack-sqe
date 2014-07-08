@@ -7,7 +7,7 @@ users:
      # ubuntu
      passwd: $6$rounds=4096$A0eKrix5oH$4F70Syi4jfhMCRygdOUC.d.qItQ57KsmW8CHhs42r/bPm7ySXdYLoHCdpg3SLlWZlv9FnRAUhgp8C23DiVZr9.
      ssh-authorized-keys:
-       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzQmxvQkKkR46obWeHFVO0iyhbWKgTaqNzjt86iaD0q9RVesxLl3zjqDbgbaFTSl1bgTaVxjgh4oZbzgoMpsHeOUHqPWtqZvSviS0u1SMM30o1ivlKyvZjg2lOgno/Z1NO/flgoj5O1MySHbhn0gwgUinFynUeo9HyUTlOz+UU8UQzQb93v4aYUWcd1/r5VDDfWCt3W5kE8qsb/dUwtN2KSUfy4nmRiRobuNyla2lB9t4Jen3SzXFP52YQMD161fjyieSubSwAgIIWwo1bCgm/oUVLZvGcOQMEtgtccjXd2JXiciAKb7U0XLblRxBpn/nnzXHV3U9xgPlBVBLz9zdh test.node@example.com
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRSvaam32JTIC+42NSLwVLmCcB2kIqZorzxWZwEgwbAjRRLXHTm5P3e88GFa+CIZDejWPonelSBnj86zidGuFHpZGnn73c7Cszm2adWUgLIEMcvzl9f/x1zkODTtbe4Bag7V7nDpglieyRZdS5blxe/sKaw4RQNvIvvUJf0qE13DUVIUZxetSNhrxodH5JEgJUDSQQBFQj/9ql9A9p7SamVDwKJVyLHxDhVvWAdVhazIg47BwA35eE7thWNVPk5261zAckKAqnHVVZ/0VD2QkQsuX67fzpxSKaLPxPtvAdH19WX47gXwtAhzoyXGWYaQWabdWn3/rr59rVjUWmUd7Z test.node@example.com
 
 packages:
    - git
