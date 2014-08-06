@@ -23,6 +23,8 @@ WORKSPACE = os.environ.get('WORKSPACE')
 SCREEN_LOG_PATH = os.path.join(WORKSPACE, 'logs')
 PARENT_FOLDER_PATH = os.path.dirname(os.path.dirname(__file__))
 
+DEVSTACK_COMMIT = os.environ.get('DEVSTACK_COMMIT')
+
 # Zuul variables
 BASE_LOG_PATH = os.environ.get('BASE_LOG_PATH')
 ZUUL_PIPELINE = os.environ.get('ZUUL_PIPELINE')
@@ -74,8 +76,9 @@ msg.insert(0, os.linesep)
 logger.debug(os.linesep.join(msg))
 
 # Raise exception if there are undefined variables
+nullable = ['DEVSTACK_COMMIT']
 defined = [values[key] is not None for key in dir()
-           if key[0].isupper()]
+           if key[0].isupper() and key not in nullable]
 if not all(defined):
     raise Exception('There are undefined environment variables.')
 

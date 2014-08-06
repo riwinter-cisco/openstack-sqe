@@ -18,7 +18,7 @@ import logging
 import os
 import requests
 from ci.lib import utils
-from ci import WORKSPACE, SCREEN_LOG_PATH
+from ci import WORKSPACE, SCREEN_LOG_PATH, DEVSTACK_COMMIT
 
 
 logger = logging.getLogger(__name__)
@@ -29,12 +29,14 @@ class DevStack(object):
     def __init__(self, localrc=None, local_conf=None,
                  git_url='https://github.com/openstack-dev/devstack.git',
                  git_branch='master',
-                 clone_path=os.path.join(WORKSPACE, 'devstack')):
+                 clone_path=os.path.join(WORKSPACE, 'devstack'),
+                 git_commit=DEVSTACK_COMMIT):
         self.localrc = localrc
         self.local_conf = local_conf
         self._git_url = git_url
         self._git_branch = git_branch
         self._clone_path = os.path.expanduser(clone_path)
+        self._git_commit = git_commit
         self.localrc_path = os.path.join(self._clone_path, 'localrc')
         self.localconf_path = os.path.join(self._clone_path, 'local.conf')
         self._tempest_path = os.path.join('/opt/stack/', 'tempest')
@@ -49,10 +51,14 @@ class DevStack(object):
                 logger.error('{0} already exists.'.format(self._clone_path))
                 return
         logger.info('Clone DevStack to {0}'.format(self._clone_path))
-        cmd = 'git clone --depth=1 -b {branch} {url} {dest}'.format(
+        cmd = 'git clone -b {branch} {url} {dest}'.format(
             branch=self._git_branch, url=self._git_url, dest=self._clone_path)
         output, code = utils.run_cmd_line(cmd)
         logger.info(output)
+        if self._git_commit:
+            cmd = 'cd {p} && git checkout {c} && cd {w}'.format(
+                p=self._clone_path, c=self._git_commit, w=WORKSPACE)
+            utils.run_cmd_line(cmd, shell=True)
 
     def _put_localrc(self):
         if self.localrc is None:
