@@ -38,7 +38,7 @@ def venv(private=True):
 @intempest
 def additions():
     log.info("Installing additional modules for tempest")
-    local("pip install junitxml nose")
+    local("pip install junitxml nose testresources")
 
 
 @task
