@@ -39,6 +39,7 @@ def main(host, user, password, tempest_filter, tempest_dir, tempest_list_file,
                 api.put(local_path=tempest_list_file, remote_path='list.txt')
             api.sudo(command='pip install junitxml')
             api.sudo(command='pip install testresources')
+            api.sudo(command='pip install wget http://172.29.173.233/onep/onePK-sdk-python-rel-1.3.0.181.tar.gz')
             if patch_set:
                 api.run('git fetch https://review.openstack.org/openstack/tempest'
                         ' {0} && git checkout FETCH_HEAD'.format(patch_set))
